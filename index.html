@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Message Box</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-indigo-100 min-h-screen">
+    <!-- Landing View -->
+    <div id="landing-view" class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-indigo-900 mb-6">Anonymous Message Box</h1>
+            <p class="text-xl text-gray-600 mb-8">Create your personal inbox and receive anonymous messages with music!</p>
+            <button id="create-inbox" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transform transition hover:scale-105">
+                Create Your Inbox <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Inbox View -->
+    <div id="inbox-view" class="container mx-auto px-4 py-8 hidden">
+        <div class="max-w-4xl mx-auto">
+            <!-- Inbox Header -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Your Anonymous Inbox</h2>
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="inbox-url" readonly class="flex-1 p-3 bg-gray-50 rounded border border-gray-200" />
+                    <button id="copy-url" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-copy mr-2"></i> Copy URL
+                    </button>
+                </div>
+            </div>
+
+            <!-- Message Form -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Send an Anonymous Message</h3>
+                <form id="message-form">
+                    <div class="mb-4">
+                        <textarea id="message-text" rows="4" placeholder="Type your message here..." 
+                                class="w-full p-3 rounded border border-gray-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" id="spotify-url" placeholder="Optional: Paste Spotify track URL here" 
+                               class="w-full p-3 rounded border border-gray-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" />
+                        <p class="text-sm text-gray-500 mt-1">Example: https://open.spotify.com/track/...</p>
+                    </div>
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transform transition hover:scale-105">
+                        <i class="fas fa-paper-plane mr-2"></i> Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Messages List -->
+            <div id="messages-container">
+                <!-- Messages will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-300 translate-y-full">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
